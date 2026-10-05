@@ -2,6 +2,24 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4835510926677716');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4835510926677716&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1OF STUDIO | דניאל ניסים</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -532,7 +550,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 
 /* ─── WORKSHOPS ─── */
 .workshops {
-  padding: 8rem 4rem;
+  padding: 4rem 4rem 5rem;
   background: var(--linen-deep);
 }
 
@@ -541,7 +559,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   grid-template-columns: 1fr 1.3fr;
   gap: 4rem;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Hub page variant: intro text + workshop menu share the right column,
@@ -564,6 +582,9 @@ nav.scrolled { border-bottom-color: var(--border); }
 
 .workshops-intro.hub-layout > .workshops-image {
   grid-area: image;
+  aspect-ratio: 4/3;
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .workshops-intro.hub-layout > .workshops-menu {
@@ -813,38 +834,52 @@ nav.scrolled { border-bottom-color: var(--border); }
   color: var(--stone-light);
 }
 
-.testimonial-marquee {
-  overflow: hidden;
+.testimonial-carousel {
   position: relative;
-  width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  padding: 0 3.2rem;
+}
+
+.testimonial-viewport {
+  overflow: hidden;
 }
 
 .testimonial-track {
   display: flex;
   gap: 1.5rem;
-  width: max-content;
-  animation: testimonial-scroll 36s linear infinite;
-}
-
-.testimonial-marquee:hover .testimonial-track {
-  animation-play-state: paused;
-}
-
-@keyframes testimonial-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  transition: transform 0.5s ease;
 }
 
 .testimonial-track .testimonial-card {
-  flex: 0 0 300px;
-  max-width: 300px;
+  flex: 0 0 calc((100% - 3rem) / 3);
+  max-width: none;
 }
 
+.testimonial-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245,240,232,0.92);
+  border: 1px solid var(--border);
+  color: var(--bark);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  transition: background 0.2s;
+}
+.testimonial-arrow:hover { background: #fff; }
+.testimonial-arrow.prev { right: 0; }
+.testimonial-arrow.next { left: 0; }
+
 @media (max-width: 768px) {
-  .testimonial-track .testimonial-card { flex: 0 0 240px; max-width: 240px; }
-  .testimonial-track { animation-duration: 26s; }
+  .testimonial-track .testimonial-card { flex: 0 0 100%; }
+  .testimonial-carousel { padding: 0 2.6rem; }
 }
 
 .workshops-policy {
@@ -1520,6 +1555,55 @@ nav.scrolled { border-bottom-color: var(--border); }
   .legal-modal {
     padding: 2rem 1.5rem;
   }
+
+  /* WORKSHOPS (hub section) */
+  .workshops {
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .works-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .works-title {
+    font-size: 1.5rem;
+  }
+
+  .workshops-intro.hub-layout {
+    row-gap: 1.2rem;
+  }
+
+  .workshops-intro.hub-layout > .workshops-image {
+    max-width: 68%;
+  }
+
+  .workshops-heading {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .workshops-body {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .workshops-body p + p {
+    margin-top: 0.6rem;
+  }
+
+  .workshop-menu-item {
+    padding: 0.9rem 1.4rem;
+  }
+
+  .workshop-menu-icon {
+    height: 40px;
+  }
+
+  .workshop-menu-title {
+    font-size: 1rem;
+  }
 }
 
 /* Mobile-only: distribute the 4 workshop-detail gallery images between
@@ -2051,7 +2135,7 @@ nav.scrolled { border-bottom-color: var(--border); }
         <p>מניחים את הטלפון ואת רעש החיים בצד לכמה שעות ומגיעים ליצור משהו משלכם.</p>
       </div>
     </div>
-    <div class="workshops-image" style="aspect-ratio: 3/4; max-width: 62%; margin: 0 auto;">
+    <div class="workshops-image">
       <img src="images/daniel-portrait-studio.jpg" alt="דניאל, 1OF STUDIO">
     </div>
     <div class="workshops-menu">

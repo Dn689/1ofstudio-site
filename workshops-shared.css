@@ -699,38 +699,52 @@ nav.scrolled { border-bottom-color: var(--border); }
   color: var(--stone-light);
 }
 
-.testimonial-marquee {
-  overflow: hidden;
+.testimonial-carousel {
   position: relative;
-  width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  padding: 0 3.2rem;
+}
+
+.testimonial-viewport {
+  overflow: hidden;
 }
 
 .testimonial-track {
   display: flex;
   gap: 1.5rem;
-  width: max-content;
-  animation: testimonial-scroll 36s linear infinite;
-}
-
-.testimonial-marquee:hover .testimonial-track {
-  animation-play-state: paused;
-}
-
-@keyframes testimonial-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  transition: transform 0.5s ease;
 }
 
 .testimonial-track .testimonial-card {
-  flex: 0 0 300px;
-  max-width: 300px;
+  flex: 0 0 calc((100% - 3rem) / 3);
+  max-width: none;
 }
 
+.testimonial-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245,240,232,0.92);
+  border: 1px solid var(--border);
+  color: var(--bark);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  transition: background 0.2s;
+}
+.testimonial-arrow:hover { background: #fff; }
+.testimonial-arrow.prev { right: 0; }
+.testimonial-arrow.next { left: 0; }
+
 @media (max-width: 768px) {
-  .testimonial-track .testimonial-card { flex: 0 0 240px; max-width: 240px; }
-  .testimonial-track { animation-duration: 26s; }
+  .testimonial-track .testimonial-card { flex: 0 0 100%; }
+  .testimonial-carousel { padding: 0 2.6rem; }
 }
 
 .workshops-policy {
@@ -989,10 +1003,40 @@ nav.scrolled { border-bottom-color: var(--border); }
 
 .workshops-gallery .workshops-image {
   background: #fff;
-  border: 1px solid #fff;
+  border: 1px solid var(--border);
   box-shadow: 0 1px 4px rgba(44, 40, 32, 0.1);
   padding: 0.4rem;
-  aspect-ratio: 1/1;
+  aspect-ratio: auto;
+}
+
+/* Reserve the tile's height with the classic padding-top intrinsic-ratio
+   trick instead of the native `aspect-ratio` property. On mobile these tiles
+   become flex items of .wpage-body-wrap via an ancestor `display: contents`
+   (see the mobile re-ordering block below), and native `aspect-ratio` sizing
+   on a flex item placed this way is unreliable in Safari/WebKit, which was
+   cutting off the bottom border/padding on real iPhones. padding-top: 100%
+   on a block ::before is universally supported and side-steps that bug. */
+.workshops-gallery .workshops-image::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+/* A gallery tile can opt into a different reserved ratio (e.g. a tall
+   portrait photo) by adding this modifier class instead of a square crop. */
+/* Generic opt-in for a gallery tile to reserve its own photo's ratio
+   instead of the default square crop - set `style="--img-ratio: W/H"` on
+   the .workshops-image div alongside this class. */
+.workshops-gallery .workshops-image--fit::before {
+  padding-top: calc(100% / var(--img-ratio, 1));
+}
+
+.workshops-gallery .workshops-image img {
+  position: absolute;
+  inset: 0.4rem;
+  width: calc(100% - 0.8rem);
+  height: calc(100% - 0.8rem);
+  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -1425,6 +1469,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   .wpage-body-wrap {
     display: flex;
     flex-direction: column;
+    gap: 2.5rem;
   }
 
   .wpage-columns,
@@ -1433,14 +1478,14 @@ nav.scrolled { border-bottom-color: var(--border); }
     display: contents;
   }
 
-  .wpage-content .workshops-body { order: 10; }
-  .workshop-cards.single { order: 20; }
-  .workshop-inline-signup-btn { order: 30; }
-  .workshops-media { order: 50; }
-  .workshops-faq { order: 60; }
-  .workshops-testimonials { order: 80; }
-  .workshops-policy { order: 90; }
-  .workshop-signup { order: 110; }
+  .wpage-content .workshops-body { order: 10; margin-bottom: 0; }
+  .workshop-cards.single { order: 20; margin-bottom: 0; }
+  .workshop-inline-signup-btn { order: 30; margin: 0 auto; }
+  .workshops-media { order: 50; margin-bottom: 0; }
+  .workshops-faq { order: 60; margin-bottom: 0; }
+  .workshops-testimonials { order: 80; margin-bottom: 0; }
+  .workshops-policy { order: 90; margin-bottom: 0; }
+  .workshop-signup { order: 110; margin: 0 auto; }
 
   .workshops-gallery .workshops-image:nth-child(1) { order: 0; }
   .workshops-gallery .workshops-image:nth-child(2) { order: 40; }
