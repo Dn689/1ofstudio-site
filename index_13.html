@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1OF STUDIO | דניאל ניסים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Heebo:wght@300;400&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --linen: #F5F0E8;
+  --linen-deep: #EDE5D4;
+  --bark: #2C2820;
+  --stone: #7A6A55;
+  --stone-light: #9A8A76;
+  --border: #D8CCBA;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--linen);
+  color: var(--bark);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  direction: rtl;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem 4rem;
+  background: rgba(245,240,232,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+nav.scrolled { border-bottom-color: var(--border); }
+
+.nav-logo img {
+  height: 44px;
+  width: auto;
+  mix-blend-mode: multiply;
+  filter: grayscale(20%);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--bark); }
+
+/* ─── HERO ─── */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #EDE5D4 0%, #F5F0E8 60%, #E8DFD0 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-logo {
+  width: 140px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.hero-tagline {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--stone);
+  letter-spacing: 0.05em;
+}
+
+.hero-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.hero-scroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--stone-light), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ─── SECTION BASE ─── */
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── ABOUT ─── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 85vh;
+}
+
+.about-image {
+  position: relative;
+  overflow: hidden;
+  background: #C8BAA0;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  /* החלף את ה-src בתמונה שלך מ-Webflow Assets */
+}
+
+.about-text {
+  padding: 6rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--linen);
+}
+
+.about-heading {
+  font-family: 'Heebo', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--bark);
+  margin-bottom: 2rem;
+}
+
+.about-heading em {
+  font-style: italic;
+  color: var(--stone);
+}
+
+.about-body {
+  font-size: 0.88rem;
+  line-height: 2;
+  color: #5E5040;
+  max-width: 440px;
+}
+
+.about-body p + p { margin-top: 1.2rem; }
+
+/* ─── WORKS ─── */
+.works {
+  padding: 7rem 4rem;
+  background: var(--linen-deep);
+}
+
+.works-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.works-title {
+  font-family: 'Heebo', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--bark);
+}
+
+.works-count {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--stone-light);
+  text-transform: uppercase;
+}
+
+/* ─── WORK ITEM ─── */
+.work-item {
+  margin-bottom: 6rem;
+  padding-bottom: 6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.work-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.work-grid.reverse { grid-template-columns: 1fr 1.2fr; }
+.work-grid.reverse .work-images { order: 2; }
+.work-grid.reverse .work-info { order: 1; }
+
+/* Gallery */
+.work-images {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.work-images.work-carousel { display: block; }
+
+.work-carousel-viewport {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #D4C8B4;
+}
+
+.work-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+.work-carousel-slide.active { opacity: 1; visibility: visible; }
+
+.work-carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  display: block;
+}
+
+.work-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245,240,232,0.92);
+  border: 1px solid var(--border);
+  color: var(--bark);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  transition: background 0.2s;
+}
+.work-carousel-arrow:hover { background: #fff; }
+.work-carousel-arrow.prev { right: 0.75rem; }
+.work-carousel-arrow.next { left: 0.75rem; }
+
+.work-carousel-counter {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  direction: ltr;
+  background: rgba(44,40,32,0.75);
+  color: #F5F0E8;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.6rem;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.before-tag {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.8rem;
+  background: rgba(44,40,32,0.75);
+  color: #F5F0E8;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Work Info */
+.work-info {
+  padding-top: 1rem;
+  position: sticky;
+  top: 8rem;
+}
+
+.work-number {
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.85rem;
+  color: var(--stone-light);
+  margin-bottom: 1rem;
+}
+
+.work-name {
+  font-family: 'Heebo', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--bark);
+  margin-bottom: 1.5rem;
+}
+
+.work-desc {
+  font-size: 0.84rem;
+  line-height: 1.9;
+  color: #5E5040;
+  margin-bottom: 2rem;
+}
+
+.work-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.work-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.detail-label {
+  color: var(--stone-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+.detail-value { color: var(--bark); }
+
+.work-price {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--bark);
+  margin-bottom: 1rem;
+}
+
+.sold-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+}
+
+.available-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5E5040;
+  border: 1px solid #9A8A76;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.available-badge:hover {
+  background: var(--bark);
+  color: var(--linen);
+  border-color: var(--bark);
+}
+
+/* ─── PRESS ─── */
+.press {
+  padding: 7rem 4rem;
+  background: var(--linen-deep);
+}
+
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  gap: 2.5rem;
+  justify-content: start;
+}
+
+.press-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.press-card-frame {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: #fff;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.press-card:hover .press-card-frame {
+  border-color: var(--stone);
+}
+
+.press-card-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.press-card-zoom {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  background: rgba(44,40,32,0.78);
+  color: #F5F0E8;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.7rem;
+  z-index: 2;
+}
+
+.press-card-caption {
+  margin-top: 1.1rem;
+}
+
+.press-card-source {
+  font-size: 0.85rem;
+  color: var(--bark);
+  font-weight: 500;
+}
+
+.press-card-desc {
+  font-size: 0.78rem;
+  color: var(--stone);
+  margin-top: 0.3rem;
+  line-height: 1.6;
+}
+
+.press-card-date {
+  font-size: 0.68rem;
+  color: var(--stone-light);
+  letter-spacing: 0.05em;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .press-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+}
+
+/* ─── WORKSHOPS ─── */
+.workshops {
+  padding: 8rem 4rem;
+  background: var(--linen-deep);
+}
+
+.workshops-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+/* Hub page variant: intro text + workshop menu share the right column,
+   ending flush with the image's bottom edge. Scoped to this modifier
+   class only, so detail pages (workshop-1.html / workshop-2.html),
+   which reuse the same base classes, are unaffected. */
+.workshops-intro.hub-layout {
+  grid-template-areas:
+    "text image"
+    "menu image";
+  grid-template-rows: auto 1fr;
+  column-gap: 4rem;
+  row-gap: 2.5rem;
+  align-items: stretch;
+}
+
+.workshops-intro.hub-layout > .workshops-text {
+  grid-area: text;
+}
+
+.workshops-intro.hub-layout > .workshops-image {
+  grid-area: image;
+}
+
+.workshops-intro.hub-layout > .workshops-menu {
+  grid-area: menu;
+}
+
+.workshops-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--linen-deep);
+  aspect-ratio: 4/3;
+}
+
+.workshops-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.93;
+}
+
+.workshops-image.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stone-light);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+  padding: 2rem;
+}
+
+.workshops-heading {
+  font-family: 'Heebo', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--bark);
+  margin-bottom: 1.5rem;
+}
+
+.workshops-heading em { font-style: italic; color: var(--stone); }
+
+.workshops-body {
+  font-size: 0.88rem;
+  line-height: 2;
+  color: #5E5040;
+  max-width: 480px;
+}
+
+.workshops-body p + p { margin-top: 1.2rem; }
+
+.workshop-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 6rem;
+}
+
+.workshop-card {
+  background: var(--linen);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+
+.workshop-card.placeholder-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stone-light);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  border-style: dashed;
+  min-height: 200px;
+  text-align: center;
+}
+
+.workshop-card-title {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--bark);
+  margin-bottom: 1.8rem;
+}
+
+.workshop-detail-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+
+.workshop-detail-row:last-of-type { border-bottom: none; }
+
+.workshop-detail-label {
+  color: var(--stone-light);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.workshop-detail-value { color: var(--bark); line-height: 1.6; text-align: right; }
+
+.workshop-price {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--bark);
+  margin-top: 1.5rem;
+}
+
+.workshop-price-note {
+  font-size: 0.75rem;
+  color: var(--stone-light);
+  margin-top: 0.4rem;
+}
+
+.workshops-media {
+  margin-bottom: 6rem;
+}
+
+.workshops-media-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.media-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--linen);
+  border: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-decoration: none;
+  min-width: 220px;
+  transition: all 0.3s;
+}
+
+.media-link:hover {
+  border-color: var(--bark);
+  background: var(--bark);
+}
+
+.media-link:hover .media-link-label,
+.media-link:hover .media-link-sub {
+  color: var(--linen);
+}
+
+.media-link-label {
+  font-size: 0.9rem;
+  color: var(--bark);
+}
+
+.media-link-sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+}
+
+.workshops-subhead {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: var(--bark);
+  margin-bottom: 2rem;
+}
+
+.workshops-faq {
+  margin-bottom: 6rem;
+  width: 480px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--bark);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { content: ""; }
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: var(--stone-light);
+  margin-inline-start: 1rem;
+}
+
+.faq-item[open] summary::after { content: '−'; }
+
+.faq-answer {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #5E5040;
+  margin-top: 0.6rem;
+  max-width: 640px;
+}
+
+.workshops-testimonials {
+  margin-bottom: 6rem;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.testimonial-card {
+  background: var(--linen);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.testimonial-quote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--bark);
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-author {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+}
+
+.testimonial-marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: testimonial-scroll 36s linear infinite;
+}
+
+.testimonial-marquee:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonial-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.testimonial-track .testimonial-card {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .testimonial-track .testimonial-card { flex: 0 0 240px; max-width: 240px; }
+  .testimonial-track { animation-duration: 26s; }
+}
+
+.workshops-policy {
+  max-width: 640px;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  border-inline-start: 2px solid var(--border);
+}
+
+.workshops-policy p { font-size: 0.82rem; line-height: 1.9; color: #5E5040; }
+
+.workshops-policy ul {
+  margin: 0.8rem 0;
+  padding-inline-start: 1.3rem;
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: #5E5040;
+}
+
+.workshops-policy li { margin-bottom: 0.3rem; }
+
+.workshop-signup {
+  max-width: 640px;
+  margin: 0 auto 4rem;
+  background: var(--linen);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  text-align: center;
+  scroll-margin-top: 6rem;
+}
+
+.workshop-signup h3 {
+  font-family: "Fraunces", serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 0.6rem;
+}
+
+.workshop-signup > p {
+  font-size: 0.82rem;
+  color: var(--stone);
+  line-height: 1.7;
+  margin-bottom: 1.8rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: right;
+}
+
+.signup-form input,
+.signup-form textarea {
+  font-family: "Heebo", sans-serif;
+  font-size: 0.85rem;
+  color: var(--bark);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  direction: rtl;
+  text-align: right;
+}
+
+.signup-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  outline: none;
+  border-color: var(--stone);
+}
+
+.signup-form button {
+  align-self: center;
+  margin-top: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5E5040;
+  background: transparent;
+  border: 1px solid #9A8A76;
+  padding: 0.9rem 2.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.signup-form button:hover {
+  background: var(--bark);
+  border-color: var(--bark);
+  color: var(--linen);
+}
+
+.signup-status {
+  margin-top: 1.2rem;
+  font-size: 0.82rem;
+  color: var(--stone);
+  display: none;
+}
+
+.signup-status.visible { display: block; }
+
+.workshop-inline-signup-btn {
+  display: block;
+  width: fit-content;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5E5040;
+  background: transparent;
+  border: 1px solid #9A8A76;
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  margin: 0 auto 3rem;
+}
+
+.workshop-inline-signup-btn:hover {
+  background: var(--bark);
+  border-color: var(--bark);
+  color: var(--linen);
+}
+
+.workshops-cta {
+  text-align: center;
+}
+
+.workshops-cta a {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5E5040;
+  border: 1px solid #9A8A76;
+  padding: 0.9rem 2.2rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.workshops-cta a:hover {
+  background: var(--bark);
+  color: var(--linen);
+  border-color: var(--bark);
+}
+
+/* Workshops menu (hub page) */
+.workshops-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  max-width: 720px;
+  align-self: end;
+  width: 100%;
+}
+
+.workshop-menu-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 1.2rem 2rem;
+  background: var(--linen);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.workshop-menu-icon {
+  height: 54px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  justify-self: center;
+}
+
+.workshop-menu-item:hover {
+  border-color: var(--bark);
+  background: var(--bark);
+}
+
+.workshop-menu-item:hover .workshop-menu-title,
+.workshop-menu-item:hover .workshop-menu-arrow {
+  color: var(--linen);
+}
+
+.workshop-menu-title {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--bark);
+}
+
+.workshop-menu-arrow {
+  font-size: 1.2rem;
+  color: var(--stone-light);
+}
+
+/* Workshop detail sub-pages (workshop-1.html, workshop-2.html) */
+.wpage-header {
+  padding: 9rem 4rem 2.5rem;
+  background: var(--linen-deep);
+  border-bottom: 1px solid var(--border);
+}
+
+.wpage-back {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+  text-decoration: none;
+}
+
+.wpage-back:hover { color: var(--bark); }
+
+.wpage-title {
+  font-family: 'Heebo', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 300;
+  color: var(--bark);
+  margin-top: 1rem;
+}
+
+.wpage-body-wrap {
+  padding: 5rem 4rem 7rem;
+  background: var(--linen-deep);
+}
+
+/* Detail page: content column (text + technical card + media + faq)
+   beside a stacked image gallery column. Scoped to workshop-1.html /
+   workshop-2.html only - does not touch .workshops-intro or the hub page. */
+.wpage-columns {
+  display: grid;
+  grid-template-columns: 480px 534px;
+  gap: 161px;
+  align-items: start;
+  margin-bottom: 5rem;
+  margin-left: 97px;
+}
+
+.wpage-content .workshops-body {
+  margin-bottom: 3rem;
+}
+
+.workshops-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.workshops-gallery .workshops-image {
+  background: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0 1px 4px rgba(44, 40, 32, 0.1);
+  padding: 0.4rem;
+  aspect-ratio: 1/1;
+}
+
+@media (max-width: 768px) {
+  .wpage-columns {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-left: 0;
+  }
+  .wpage-columns > * { min-width: 0; }
+  .workshops-faq { width: 100%; }
+}
+
+.workshop-cards.single {
+  grid-template-columns: 1fr;
+  width: 480px;
+}
+
+@media (max-width: 768px) {
+  .wpage-header, .wpage-body-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .workshop-cards.single { width: 100%; }
+}
+
+/* ─── STUDIO ─── */
+.studio {
+  padding: 8rem 4rem;
+  background: var(--linen);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.studio-heading {
+  font-family: 'Heebo', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--bark);
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.studio-heading em { font-style: italic; color: var(--stone); }
+
+.studio-body {
+  font-size: 0.86rem;
+  line-height: 2;
+  color: #5E5040;
+}
+
+.studio-body p + p { margin-top: 1.2rem; }
+
+.studio-details {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.studio-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+
+.studio-detail-label {
+  color: var(--stone-light);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  min-width: 80px;
+  padding-top: 0.1rem;
+}
+
+.studio-detail-value { color: var(--bark); line-height: 1.7; }
+
+/* ─── CONTACT ─── */
+.contact {
+  background: var(--bark);
+  padding: 8rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-pre {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #7A6A55;
+  margin-bottom: 2rem;
+}
+
+.contact-heading {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #F0E8D8;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  max-width: 580px;
+}
+
+.contact-heading em { font-style: italic; color: #9A8A6A; }
+
+.contact-note {
+  font-size: 0.82rem;
+  color: #6B5E4E;
+  line-height: 1.9;
+  max-width: 380px;
+  margin-bottom: 3rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.contact-link {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.2rem;
+  color: #C4B49A;
+  text-decoration: none;
+  border-bottom: 1px solid #3A3028;
+  padding-bottom: 0.2rem;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.contact-link:hover { color: #F0E8D8; border-color: #7A6A55; }
+
+.contact-phone {
+  font-size: 0.82rem;
+  color: #6B5E4E;
+  letter-spacing: 0.1em;
+}
+
+.footer-line {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #3A3028;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: #4A4030;
+  text-transform: uppercase;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-legal-links a {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: #6B5E4E;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-legal-links a:hover { color: #C4B49A; }
+
+/* ─── MODAL ─── */
+.legal-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.legal-modal-overlay.open { display: flex; }
+
+.legal-modal {
+  background: var(--linen);
+  max-width: 680px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 3rem;
+  position: relative;
+  direction: rtl;
+}
+
+.legal-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--stone);
+}
+
+.legal-modal h2 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 2rem;
+}
+
+.legal-modal h3 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--bark);
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.legal-modal p, .legal-modal li {
+  font-size: 0.82rem;
+  line-height: 2;
+  color: #5E5040;
+}
+
+.legal-modal ul {
+  padding-right: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-modal li { margin-bottom: 0.3rem; }
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(44,40,32,0.95);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: #C4B49A;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* ─── FADE IN ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .workshops-intro {
+    grid-template-columns: 1fr;
+  }
+  .workshops-intro.hub-layout {
+    grid-template-areas:
+      "text"
+      "image"
+      "menu";
+  }
+  .workshops-menu { align-self: auto; }
+  .workshop-cards { grid-template-columns: 1fr; }
+  .testimonial-grid, .testimonial-grid.cols-2 { grid-template-columns: 1fr; }
+
+
+  /* NAV */
+  nav {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  /* HERO */
+  .hero-logo {
+    width: 90px;
+  }
+
+  .hero-tagline {
+    font-size: 2.8rem !important;
+  }
+
+  /* ABOUT */
+  .about {
+    grid-template-columns: 1fr !important;
+    padding: 5rem 1.5rem 4rem !important;
+    gap: 2.5rem !important;
+  }
+
+  .about-image {
+    height: 340px !important;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+  }
+
+  .about-body {
+    max-width: 100%;
+  }
+
+  /* WORKS */
+  .works {
+    padding: 4rem 1.5rem;
+  }
+
+  .work-grid,
+  .work-grid.reverse {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  /* טקסט תמיד ראשון במובייל */
+  .work-grid .work-images { order: 2; }
+  .work-grid .work-info { order: 1; }
+  .work-grid.reverse .work-images { order: 2 !important; }
+  .work-grid.reverse .work-info { order: 1 !important; }
+
+  .work-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .work-info {
+    position: static;
+    padding-top: 0;
+  }
+
+  .work-name {
+    font-size: 1.7rem;
+  }
+
+  /* STUDIO */
+  .studio {
+    grid-template-columns: 1fr !important;
+    padding: 4rem 1.5rem !important;
+    gap: 3rem !important;
+  }
+
+  .studio-heading {
+    font-size: 1.8rem;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 5rem 1.5rem !important;
+  }
+
+  .footer-line {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .footer-legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* LEGAL MODAL */
+  .legal-modal {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Mobile-only: distribute the 4 workshop-detail gallery images between
+   content sections instead of stacking them all together at the end.
+   Order: image1, description, technical card, signup button, image2,
+   "more about the workshop" links, FAQ, image3, testimonials, image4,
+   cancellation policy, signup form.
+   Implementation: display:contents unwraps .wpage-columns / .wpage-content /
+   .workshops-gallery at mobile only, so every piece becomes a direct flex
+   item of .wpage-body-wrap (display:flex; flex-direction:column here), then
+   an explicit `order` on each piece places it. display:contents does not
+   change the DOM, so descendant/nth-child selectors below still work.
+   Desktop is untouched - this whole block only applies below 768px, and is
+   scoped to classes that only exist on workshop-1.html / workshop-2.html
+   (never matched on the hub page, even though the CSS file is shared). */
+@media (max-width: 768px) {
+  .wpage-body-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wpage-columns,
+  .wpage-content,
+  .workshops-gallery {
+    display: contents;
+  }
+
+  .wpage-content .workshops-body { order: 10; }
+  .workshop-cards.single { order: 20; }
+  .workshop-inline-signup-btn { order: 30; }
+  .workshops-media { order: 50; }
+  .workshops-faq { order: 60; }
+  .workshops-testimonials { order: 80; }
+  .workshops-policy { order: 90; }
+  .workshop-signup { order: 110; }
+
+  .workshops-gallery .workshops-image:nth-child(1) { order: 0; }
+  .workshops-gallery .workshops-image:nth-child(2) { order: 40; }
+  .workshops-gallery .workshops-image:nth-child(3) { order: 70; }
+  .workshops-gallery .workshops-image:nth-child(4) { order: 100; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" style="direction: ltr;">
+  <div class="nav-logo">
+    <img src="https://cdn.prod.website-files.com/69d6a9e16d2c5038d711fb8e/69d6bd81f8e46dd13cb3c722_3ce9b3eaf4c0c366da9c439f737f4c6c_%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%9C%D7%9C%D7%90%20%D7%A9%D7%9D%20%2822%29.png" alt="1OF STUDIO" style="height:44px;width:auto;">
+  </div>
+  <ul class="nav-links" style="direction: rtl;">
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#works">עבודות</a></li>
+    <li><a href="#workshops">סדנאות</a></li>
+    <li><a href="#press">כתבות</a></li>
+    <li><a href="#studio">הסטודיו</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up visible">
+    <img class="hero-logo" src="https://cdn.prod.website-files.com/69d6a9e16d2c5038d711fb8e/69d6bd81f8e46dd13cb3c722_3ce9b3eaf4c0c366da9c439f737f4c6c_%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%9C%D7%9C%D7%90%20%D7%A9%D7%9D%20%2822%29.png" alt="1OF STUDIO">
+    <p class="hero-tagline">חומר · צורה · זמן</p>
+    <p class="hero-sub">עיצוב רהיטים ואובייקטים · חומרים בשימוש חוזר · תל אביב</p>
+  </div>
+  <div class="hero-scroll">
+    <span>גלול</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about" style="direction: ltr;">
+  <div class="about-image">
+    <img src="https://cdn.prod.website-files.com/69d6a9e16d2c5038d711fb8e/69da773d0f883da4f0e30d06_portrait.jpg" alt="דניאל ניסים">
+  </div>
+  <div class="about-text" style="direction: rtl;">
+    <div class="section-label fade-up visible visible">על הסטודיו</div>
+    <h2 class="about-heading fade-up visible">עיצוב שמקשיב <em>לחומר</em></h2>
+    <div class="about-body fade-up visible">
+      <p>נעים מאוד - דניאל ניסים, הנדסאי אדריכלות ועיצוב פנים. מעצב ויוצר רהיטים מחומרים בשימוש חוזר.</p>
+      <p>אני בוחר לעבוד עם מה שכבר קיים סביבנו - מתוך הערכה עמוקה לחומרי הגלם, ולסיפורים שהחפצים האלה נושאים איתם.</p>
+      <p>הסטודיו פועל מתוך חיפוש מתמיד אחר החיבור שבין עבר להווה, ישן לחדש, שימושי ואסתטי. החומרים מגיעים מרחובות העיר - משקופים ישנים, חלקי מתכת, פסולת מפעלים, ורהיטים שלמים שנמצאו בימי גזם. כל פריט עובר תהליך של פירוק, הקשבה והרכבה מחדש - ללא שרטוטים. הצורה נוצרת מתוך החומר, מתוך הפגמים, מתוך מה שכבר היה.</p>
+      <p>התוצאה היא שכל יצירה היא חד פעמית - One of a kind.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="works" id="works">
+  <div class="works-header fade-up visible">
+    <h2 class="works-title">עבודות נבחרות</h2>
+    <span class="works-count">07 / יצירות</span>
+  </div>
+
+  <!-- 01 קומפיוצ'ר 1.0 - תמונות שמאל, טקסט ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/Composer 1.0 1.jpg" alt="קומפיוצ'ר 1.0">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Composer 1.0 2.jpg" alt="קומפיוצ'ר פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Composer 1.0 3.jpg" alt="קומפיוצ'ר פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Composer 1.0 4.jpg" alt="קומפיוצ'ר פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Composer 1.0 5.jpg" alt="קומפיוצ'ר פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Composer 1.0 6.jpg" alt="קומפיוצ'ר פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Composer 1.0 7.jpeg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">7</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">01</div>
+        <h3 class="work-name">קומפיוצ'ר 1.0</h3>
+        <p class="work-desc">ליין קונספטואלי שנוצר עקב ריבוי של כיסאות מחשב ישנים שפגשתי ברחוב והרצון העמוק שלי לשלב בדים ביצירה שלי. כיסאות מחשב ישנים, ששימשו שעות עבודה אינסופיות - מתגלגלים לכורסאות רכות, חד-פעמיות, שנולדו מחיבורים לא צפויים.<br><br>קומפיוצ'ר 1.0 המוצג בתמונות מורכב מכיסא מחשב וכיסאות גן מעץ טיק שנאספו מהרחוב. הכיסא רופד מחדש וכיסאות הגן פורקו והורכבו מחדש כשלד הכורסא וההדום החדשים.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">כיסא מחשב · עץ טיק ממוחדש · בד</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות</span>
+            <span class="detail-value">ר' 70 × ע' 90 × ג' ישיבה 45 × ג' כללי 110 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2023</span>
+          </div>
+        </div>
+        <div class="work-price">₪6,400</div>
+        <span class="sold-badge">נמכר</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 שולחן על פח - טקסט שמאל, תמונות ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid reverse">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/Tin table 1.jpg" alt="שולחן על פח">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Tin table 2.jpg" alt="שולחן על פח פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Tin table 3.jpg" alt="שולחן על פח פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Tin table 4.jpg" alt="שולחן על פח אווירה">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Tin table 5.jpg" alt="שולחן על פח פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Tin table 6.jpg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">6</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">02</div>
+        <h3 class="work-name">שולחן על פח</h3>
+        <p class="work-desc">פח טינר ישן קיבל חיים חדשים. אחרי ליטוש שחשף את המתכת והאיץ תהליך טבעי של החלדה, הוא הפך לבסיס בעל מראה גולמי ועוצמתי. מעליו הוספתי פלטת עץ עגולה, מצופה בטון עם טקסטורת שבבי עץ, שיוצרת ניגוד מעניין בין תעשייתי לטבעי, בין מחוספס לאסתטי.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">פח חלוד · מיקרוטופינג (בטון) · תשתית עץ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות</span>
+            <span class="detail-value">קוטר 65 ס"מ · גובה 50 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2023</span>
+          </div>
+        </div>
+        <div class="work-price">₪3,500</div>
+        <span class="sold-badge">נמכר</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 מכיסא לספסל - תמונות שמאל, טקסט ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/From chair to bench 1.jpg" alt="מכיסא לספסל">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 2.jpg" alt="מכיסא לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 3.jpg" alt="מכיסא לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 4.jpg" alt="מכיסא לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 5.jpg" alt="מכיסא לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 6.jpg" alt="מכיסא לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 7.jpg" alt="מכיסא לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 8.jpg" alt="מכיסא לספסל אווירה">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From chair to bench 9.jpg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">9</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">03</div>
+        <h3 class="work-name">מכיסא לספסל</h3>
+        <p class="work-desc">הכיסא שחלם להיות ספסל. את הכיסא הזה מצאתי ביום גזם ליד הבית שלי וישר זיהיתי את הפוטנציאל שבו. פירקתי אותו לגורמים, כל חלק עבר חידוש יסודי. כל חלקי הכיסא נשמרו בצורתם המקורית והורכבו לספסל אחד יחיד ומיוחד במינו.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">עץ טיק ממוחדש · פרזול הכיסא המקורי</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות</span>
+            <span class="detail-value">ר' 55 × ע' 35 × ג' 45 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2024</span>
+          </div>
+        </div>
+        <div class="work-price">₪3,600</div>
+        <span class="sold-badge">נמכר</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 כיסא מורחב 3.0 - טקסט שמאל, תמונות ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid reverse">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/Extended Chair 3.0 1.jpg" alt="כיסא מורחב 3.0">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 2.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 3.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 4.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 5.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 6.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 7.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 8.jpg" alt="כיסא מורחב פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 9.jpg" alt="כיסא מורחב מלמעלה">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Extended Chair 3.0 10.jpeg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">10</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">04</div>
+        <h3 class="work-name">כיסא מורחב 3.0</h3>
+        <p class="work-desc">ליין קונספטואלי שנוצר עקב המון פסולת של כיסאות שאספתי מהרחוב. הרעיון הוא לקחת את הכיסא הישן, לחצות אותו במרכז ולהרחיב לספסל מרגש. ההרחבה נוצרת תוך כדי שימוש בחומרים בשימוש חוזר.<br><br>הספסל הזה הוא השלישי בסדרה של הכיסאות המורחבים והוא משלב בתוכו חומרים קסומים. משענת הגב היא לייסט של חבית יין ישנה. שני הקורות שקושרות בין שני חצאי הכיסא הישן הן קורות של אורן קליר שנפרסו ממשקוף ישן. המשטח מרוצף בפנלים שנאגרו עם השנים במחסן של סבא שלי, שהוא קבלן בניין לשעבר.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">קורת אלון חבית יין · עץ בוק ממוחדש · עץ אורן קליר ממוחדש · פאנלי ריצוף טרצו ישנים</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות</span>
+            <span class="detail-value">ר' 90 × ע' 40 × ג' 45 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2023</span>
+          </div>
+        </div>
+        <div class="work-price">₪4,000</div>
+        <span class="sold-badge">נמכר</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 שולחן במיקס חומרים - תמונות שמאל, טקסט ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/Table in mixed materials 1.jpg" alt="שולחן במיקס חומרים">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Table in mixed materials 2.jpg" alt="מיקס פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Table in mixed materials 3.jpg" alt="מיקס פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Table in mixed materials 4.jpg" alt="מיקס פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Table in mixed materials 5.jpg" alt="מיקס לפני">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Table in mixed materials 6.jpeg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">6</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">05</div>
+        <h3 class="work-name">שולחן במיקס חומרים</h3>
+        <p class="work-desc">חמש זרועות ניקל, פעם בסיס לכיסא מחשב, עכשיו נושאות עליהן סיפור חדש. על גבי השלד המתכתי שולבו יחד עץ טיק משולחן ישן, פח חלוד עם טקסטורה עשירה, ומשקוף עץ. כל חומר מביא איתו זיכרון, וכל קו ופגם מספרים סיפור של גלגול וצמיחה.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">פח חלוד · עץ טיק ממוחדש · עץ אורן קליר ממוחדש · עץ בוק ממוחדש</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות</span>
+            <span class="detail-value">קוטר 55 ס"מ · גובה 48 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2024</span>
+          </div>
+        </div>
+        <div class="work-price">₪3,000</div>
+        <a class="available-badge" href="#contact">פנה אלי</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 בטון חלבון - טקסט שמאל, תמונות ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid reverse">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/Protein Concrete 4.0 1.jpg" alt="בטון חלבון">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 4.0 2.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 5.0 3.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 4.0 4.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 4.0 5.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 4.0 6.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 5.0 7.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 5.0 8.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 5.0 9.jpg" alt="בטון חלבון פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 4.0 10.jpeg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/Protein Concrete 5.0 11.jpeg" alt="לפני 5.0"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">11</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">06</div>
+        <h3 class="work-name">בטון חלבון</h3>
+        <p class="work-desc">ליין קונספטואלי שנולד מתוך ניסיון לניצול מקסימלי של מכלי אבקות חלבון לאחר סיומם. אני בעצם משתמש במיכל אבקת החלבון כתבנית ליציקת בטון ובשילוב עם חומרים בשימוש חוזר יוצר שולחן צד.<br><br>בתמונות מוצגים לפניכם הרביעי והחמישי בסדרה. בטון חלבון 4.0 - שילבתי בתוך יציקת הבטון קורת משקוף דלת ישנה, המשטח העליון הוא שארית של אורן פיני מבנייה של פרגולה שעליו מחובר פח ישן וחלוד. בטון חלבון 5.0 - שילבתי בתוך יציקת הבטון רגל של שידה ישנה שאספתי מהרחוב, המשטח העליון הוא שארית של עץ אשא.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">עץ אורן קליר ממוחדש · עץ אורן פיני ממוחדש · עץ בוק ממוחדש · עץ אשא ממוחדש</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות 4.0</span>
+            <span class="detail-value">ג' 45 ס"מ · <span style="color:var(--stone-light);font-size:0.7rem;">נמכר</span></span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות 5.0</span>
+            <span class="detail-value">ג' 52 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2024</span>
+          </div>
+        </div>
+        <div class="work-price">₪880</div>
+        <span class="sold-badge">נמכר</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 משולחן לספסל - תמונות שמאל, טקסט ימין -->
+  <div class="work-item fade-up visible">
+    <div class="work-grid">
+      <div class="work-images work-carousel">
+          <div class="work-carousel-viewport">
+            <div class="work-carousel-slide active">
+              <img src="images/From table to bench 1.jpg" alt="משולחן לספסל">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 2.jpg" alt="משולחן לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 3.jpg" alt="משולחן לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 4.jpg" alt="משולחן לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 5.jpg" alt="משולחן לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 6.jpg" alt="משולחן לספסל פרט">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 7.jpg" alt="משולחן לספסל אווירה">
+            </div>
+            <div class="work-carousel-slide">
+              <img src="images/From table to bench 8.jpeg" alt="לפני"><span class="before-tag">לפני</span>
+            </div>
+            <button class="work-carousel-arrow prev" type="button" aria-label="התמונה הקודמת">→</button>
+            <button class="work-carousel-arrow next" type="button" aria-label="התמונה הבאה">←</button>
+            <span class="work-carousel-counter"><span class="wc-current">1</span> / <span class="wc-total">8</span></span>
+          </div>
+        </div>
+      <div class="work-info">
+        <div class="work-number">07</div>
+        <h3 class="work-name">משולחן לספסל</h3>
+        <p class="work-desc">את השולחן הזה מצאתי בתחילת דרכי. זו בעצם היצירה הראשונה שדרכה גליתי את המתנה שלי - לפרק ולהרכיב מחדש. השכנים שלי זרקו אותו ביום גזם וברגע שראיתי אותו, לא חשבתי פעמיים.<br><br>מדובר בשולחן גינה סטנדרטי מעץ טיק. פירקתי את השולחן לגורמים, ממש כמו לגו והתחלתי להרכיב אותו מחדש כספסל מרגש. כל חלקי הספסל הם חלקיו המקוריים של השולחן, כולל הפרזולים, המגרעות והשגמים.</p>
+        <div class="work-details">
+          <div class="work-detail">
+            <span class="detail-label">חומרים</span>
+            <span class="detail-value">עץ טיק ממוחדש · פרזול מקורי מהשולחן</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">מידות</span>
+            <span class="detail-value">א' 80 × ע' 28 × ג' 44 ס"מ</span>
+          </div>
+          <div class="work-detail">
+            <span class="detail-label">שנה</span>
+            <span class="detail-value">2023</span>
+          </div>
+        </div>
+        <div class="work-price">₪2,800</div>
+        <span class="sold-badge">נמכר</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- placeholder for closing tags -->
+
+</section>
+
+<!-- WORKSHOPS -->
+<section class="workshops" id="workshops">
+  <div class="works-header fade-up visible">
+    <h2 class="works-title">סדנאות</h2>
+    <span class="works-count">יצירה עצמאית</span>
+  </div>
+
+  <div class="workshops-intro hub-layout fade-up visible">
+    <div class="workshops-text">
+      <h3 class="workshops-heading">חוויות <em>בסטודיו</em></h3>
+      <div class="workshops-body">
+        <p>אני מזמין אתכם להיכנס לעולם שלי.</p>
+        <p>בואו לקבל טעימה קטנה מבית המלאכה, מהיצירה עם חומרים בשימוש חוזר, מעבודה אינטואיטיבית עם הידיים והלב.</p>
+        <p>מניחים את הטלפון ואת רעש החיים בצד לכמה שעות ומגיעים ליצור משהו משלכם.</p>
+      </div>
+    </div>
+    <div class="workshops-image" style="aspect-ratio: 3/4; max-width: 62%; margin: 0 auto;">
+      <img src="images/daniel-portrait-studio.jpg" alt="דניאל, 1OF STUDIO">
+    </div>
+    <div class="workshops-menu">
+      <a class="workshop-menu-item fade-up visible" href="workshop-1.html">
+        <span class="workshop-menu-title">סדנת אומנות קיר מחומרים בשימוש חוזר</span>
+        <img class="workshop-menu-icon" src="images/workshop1-illustration.png" alt="">
+        <span class="workshop-menu-arrow">←</span>
+      </a>
+      <a class="workshop-menu-item fade-up visible" href="workshop-2.html">
+        <span class="workshop-menu-title">סדנת בטון וחלבון מחומרים בשימוש חוזר</span>
+        <img class="workshop-menu-icon" src="images/workshop2-illustration.png" alt="">
+        <span class="workshop-menu-arrow">←</span>
+      </a>
+    </div>
+  </div>
+  <!-- TODO: כשלסדנה השנייה יהיה שם - לעדכן כאן את הכותרת, ולמלא את workshop-2.html -->
+</section>
+
+<!-- PRESS -->
+<section class="press" id="press">
+  <div class="works-header fade-up visible">
+    <h2 class="works-title">כתבות</h2>
+    <span class="works-count">בתקשורת</span>
+  </div>
+
+  <div class="press-grid">
+    <a class="press-card" href="images/press-article-1.jpg" target="_blank" rel="noopener">
+      <div class="press-card-frame">
+        <img src="images/press-article-1.jpg" alt="כתבה על 1OF STUDIO - חיים חדשים, עיצוב היום">
+        <span class="press-card-zoom">לצפייה מלאה ⤢</span>
+      </div>
+      <div class="press-card-caption">
+        <div class="press-card-source">עיצוב היום</div>
+        <div class="press-card-desc">״חיים חדשים״ - ריאיון עם דניאל ניסים על העולם של 1OF STUDIO</div>
+        <div class="press-card-date">24.11.2025</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio" id="studio">
+  <div>
+    <div class="section-label fade-up visible visible">הסטודיו</div>
+    <h2 class="studio-heading fade-up visible">מוזמנים להגיע,<br>לראות<br><em>ולהרגיש מקרוב</em></h2>
+    <div class="studio-details fade-up visible">
+      <div class="studio-detail-row">
+        <span class="studio-detail-label">כתובת</span>
+        <span class="studio-detail-value">מנחם בגין 34, תל אביב</span>
+      </div>
+      <div class="studio-detail-row">
+        <span class="studio-detail-label">טלפון</span>
+        <span class="studio-detail-value"><a href="tel:0506899101" style="color:inherit;text-decoration:none;">050-6899101</a></span>
+      </div>
+      <div class="studio-detail-row">
+        <span class="studio-detail-label">מייל</span>
+        <span class="studio-detail-value"><a href="mailto:dn1ofstudio@gmail.com" style="color:inherit;text-decoration:none;">Dn1ofstudio@gmail.com</a></span>
+      </div>
+      <div class="studio-detail-row">
+        <span class="studio-detail-label">אינסטגרם</span>
+        <span class="studio-detail-value"><a href="https://www.instagram.com/1of__studio?igsh=YzhsMGxnNnJkODd1&utm_source=qr" target="_blank" style="color:inherit;text-decoration:none;">1of__studio</a></span>
+      </div>
+      <div class="studio-detail-row">
+        <span class="studio-detail-label">ביקורים</span>
+        <span class="studio-detail-value">בתיאום מראש בלבד</span>
+      </div>
+    </div>
+  </div>
+  <div class="fade-up">
+    <div class="studio-body">
+      <p>הסטודיו פועל מתוך חיפוש מתמיד אחר החיבור שבין עבר להווה, ישן לחדש, שימושי ואסתטי.</p>
+      <p>אני מציע עיצוב רהיטים ייחודיים לפי הזמנה אישית - כל פריט מותאם לחלל, לסיפור ולחומרים שנמצאו. ניתן לגשת עם בקשה ספציפית, או להגיע לסטודיו ולראות מה קיים.</p>
+      <p>כל יצירה יוצאת עם תיעוד מאיפה הגיע החומר ומה הייתה הכוונה מאחורי הצורה. היצירה ממשיכה לשאת את הסיפור.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="contact-pre fade-up visible">צור קשר</p>
+  <h2 class="contact-heading fade-up visible">יש לך חלל שמחכה<br><em>לאלמנט הנכון</em></h2>
+  <p class="contact-note fade-up visible">אני עובד על פרויקטים בודדים בכל פעם, ומקבל הזמנות חדשות בקצב איטי ומכוון.<br>מוזמנים ליצור קשר.</p>
+  <div class="contact-links fade-up visible">
+    <a class="contact-link" href="mailto:dn1ofstudio@gmail.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-left:0.5rem;"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      Dn1ofstudio@gmail.com
+    </a>
+    <a class="contact-link" href="https://www.instagram.com/1of__studio?igsh=YzhsMGxnNnJkODd1&utm_source=qr" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-left:0.5rem;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      1of__studio
+    </a>
+    <a class="contact-link" href="tel:0506899101">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-left:0.5rem;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 2 2 2 0 012 .02h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      050-6899101
+    </a>
+  </div>
+  <div class="footer-line">
+    <span class="footer-copy">© 2025 1OF STUDIO · דניאל ניסים</span>
+    <div class="footer-legal-links">
+      <a onclick="document.getElementById('modal-privacy').classList.add('open')">מדיניות פרטיות</a>
+      <a onclick="document.getElementById('modal-accessibility').classList.add('open')">הצהרת נגישות</a>
+      <a onclick="document.getElementById('modal-terms').classList.add('open')">תנאים והגבלות</a>
+    </div>
+    <span class="footer-copy">תל אביב, ישראל</span>
+  </div>
+</section>
+
+<!-- MODAL מדיניות פרטיות -->
+<div class="legal-modal-overlay" id="modal-privacy">
+  <div class="legal-modal">
+    <button class="legal-modal-close" onclick="document.getElementById('modal-privacy').classList.remove('open')">× סגור</button>
+    <h2>מדיניות פרטיות</h2>
+    <p>בסטודיו 1of אנו מכבדים את פרטיות הגולשים והלקוחות שלנו. מסמך זה נועד להסביר כיצד אנו אוספים, שומרים ומשתמשים במידע שנמסר לנו, וכן את זכויותיך בקשר למידע זה. הגלישה באתר והשימוש בו מהווים הסכמה למדיניות זו.</p>
+    <h3>איסוף מידע</h3>
+    <p>בעת שימוש באתר ייתכן שייאסף מידע הנמסר על ידך באופן יזום, כגון:</p>
+    <ul>
+      <li>שם מלא</li>
+      <li>כתובת דוא״ל</li>
+      <li>מספר טלפון</li>
+      <li>פרטים נוספים שתבחר למסור במסגרת פנייה או שימוש בשירותי האתר</li>
+    </ul>
+    <p>בנוסף, ייתכן וייאסף מידע טכני שאינו מזהה אישית, כגון סוג דפדפן, כתובת IP ונתוני שימוש באתר, לצרכי תפעול ושיפור השירות.</p>
+    <h3>שימוש במידע</h3>
+    <p>המידע ייעשה בו שימוש לצרכים הבאים בלבד:</p>
+    <ul>
+      <li>יצירת קשר ומתן מענה לפניות</li>
+      <li>מתן שירותים הקשורים לפעילות הסטודיו</li>
+      <li>שיפור חוויית השימוש באתר</li>
+      <li>שליחת עדכונים או מידע שיווקי – רק בכפוף להסכמתך המפורשת</li>
+    </ul>
+    <h3>שמירת מידע ואבטחתו</h3>
+    <p>אנו נוקטים באמצעים סבירים ומקובלים לצורך שמירה על המידע, אך אין ביכולתנו להבטיח הגנה מוחלטת מפני גישה בלתי מורשית או פריצה. לא נעביר מידע אישי לצדדים שלישיים ללא הסכמתך, אלא אם נידרש לכך על פי דין, צו שיפוטי או דרישה של רשות מוסמכת.</p>
+    <h3>Cookies וטכנולוגיות דומות</h3>
+    <p>האתר עשוי להשתמש בקבצי Cookies ובטכנולוגיות דומות לצורך תפעול שוטף ושיפור חוויית המשתמש. באפשרותך לחסום או למחוק Cookies דרך הגדרות הדפדפן.</p>
+    <h3>זכויות המשתמש</h3>
+    <p>בהתאם לחוק, עומדת לך הזכות לעיין במידע שנשמר עליך, לבקש תיקון או מחיקה של מידע. מימוש זכויות אלו ייעשה בכפוף לאימות זהותך ובהתאם להוראות הדין.</p>
+    <h3>הגבלת אחריות</h3>
+    <p>השימוש באתר נעשה באחריות המשתמש בלבד. הסטודיו לא יישא באחריות לנזקים ישירים או עקיפים הנובעים משימוש באתר או מהסתמכות על המידע המופיע בו.</p>
+    <h3>שינויים במדיניות</h3>
+    <p>הסטודיו רשאי לעדכן מדיניות זו מעת לעת, ללא צורך בהודעה מוקדמת.</p>
+    <h3>יצירת קשר</h3>
+    <p>לשאלות או בקשות בנושא פרטיות, ניתן לפנות אלינו:<br>📧 Dn1ofstudio@gmail.com &nbsp; 📞 050-6899101</p>
+  </div>
+</div>
+
+<!-- MODAL הצהרת נגישות -->
+<div class="legal-modal-overlay" id="modal-accessibility">
+  <div class="legal-modal">
+    <button class="legal-modal-close" onclick="document.getElementById('modal-accessibility').classList.remove('open')">× סגור</button>
+    <h2>הצהרת נגישות</h2>
+    <p>סטודיו 1of רואה חשיבות רבה בהנגשת האתר לציבור הרחב, ובפרט לאנשים עם מוגבלויות, מתוך מטרה לאפשר לכל אדם שימוש נוח ושוויוני ככל האפשר. אנו פועלים לשיפור מתמיד של נגישות האתר בהתאם ליכולות ולמגבלות הקיימות.</p>
+    <h3>התאמות נגישות באתר</h3>
+    <p>האתר כולל, בין היתר:</p>
+    <ul>
+      <li>שימוש בטקסטים קריאים וברורים</li>
+      <li>מבנה תוכן פשוט ונוח לניווט</li>
+      <li>התאמת צבעים וניגודיות לשיפור הקריאה</li>
+      <li>אפשרות להגדלת טקסט באמצעות הגדרות הדפדפן</li>
+    </ul>
+    <h3>מגבלות נגישות</h3>
+    <p>למרות מאמצינו להנגיש את כלל חלקי האתר, ייתכן כי חלקים מסוימים אינם נגישים באופן מלא. האתר נבנה ומנוהל על גבי פלטפורמה חיצונית, ולכן ייתכנו מגבלות טכניות שאינן בשליטתנו. אנו עושים מאמצים סבירים להתגבר על מגבלות אלו ככל הניתן.</p>
+    <h3>פניות בנושא נגישות</h3>
+    <p>אם נתקלת בקושי בגלישה באתר או בתוכן שאינו נגיש, נשמח לקבל פנייה ולבחון פתרון מתאים בהקדם.<br>📧 Dn1ofstudio@gmail.com &nbsp; 📞 050-6899101</p>
+    <h3>הבהרה</h3>
+    <p>הצהרת נגישות זו אינה מהווה התחייבות מוחלטת להתאמה מלאה לכל דרישות התקן, אלא משקפת מאמץ כן ומתמשך לשיפור הנגישות באתר.</p>
+  </div>
+</div>
+
+<!-- MODAL תנאים והגבלות -->
+<div class="legal-modal-overlay" id="modal-terms">
+  <div class="legal-modal">
+    <button class="legal-modal-close" onclick="document.getElementById('modal-terms').classList.remove('open')">× סגור</button>
+    <h2>תנאים והגבלות</h2>
+    <p>השימוש באתר סטודיו 1of (להלן: "האתר") כפוף לתנאים המפורטים להלן. הגלישה והשימוש באתר מהווים הסכמה מלאה לתנאים אלו.</p>
+    <h3>שימוש באתר</h3>
+    <p>האתר נועד לצרכי מידע, התרשמות ויצירת קשר בלבד. אין לראות בתוכן המוצג באתר כהצעה מחייבת, התחייבות או ייעוץ מכל סוג.</p>
+    <h3>תוכן ומוצרים</h3>
+    <p>העבודות המוצגות באתר הן פריטים ייחודיים (one of a kind), אשר עשויים להשתנות במראה, במידות, בחומר או בגימור. התמונות המוצגות באתר הן להמחשה בלבד, וייתכנו הבדלים בין המוצג באתר לבין המוצר בפועל.</p>
+    <h3>קניין רוחני</h3>
+    <p>כל התכנים באתר, לרבות טקסטים, תמונות, עיצובים ואלמנטים גרפיים, הינם בבעלות הסטודיו או בשימוש מורשה. אין להעתיק, לשכפל, להפיץ, לפרסם או לעשות כל שימוש בתוכן ללא אישור מראש ובכתב.</p>
+    <h3>אחריות</h3>
+    <p>השימוש באתר נעשה באחריות המשתמש בלבד. הסטודיו לא יישא באחריות לכל נזק, ישיר או עקיף, שייגרם כתוצאה מהשימוש באתר או מהסתמכות על המידע המופיע בו. אין באמור באתר כדי להוות התחייבות כלשהי לתוצאה, איכות או התאמה לצרכים מסוימים.</p>
+    <h3>קישורים חיצוניים</h3>
+    <p>ייתכן והאתר יכלול קישורים לאתרים חיצוניים. הסטודיו אינו אחראי לתוכן, אמינות או מדיניות של אתרים אלו.</p>
+    <h3>שינויים באתר ובתנאים</h3>
+    <p>הסטודיו שומר לעצמו את הזכות לעדכן, לשנות או להסיר תכנים מהאתר, וכן לעדכן תנאים אלו, בכל עת וללא הודעה מוקדמת.</p>
+    <h3>דין וסמכות שיפוט</h3>
+    <p>השימוש באתר ותנאים אלו יהיו כפופים לדיני מדינת ישראל בלבד. סמכות השיפוט הבלעדית תהיה נתונה לבתי המשפט המוסמכים במחוז תל אביב.</p>
+    <h3>יצירת קשר</h3>
+    <p>לשאלות בנוגע לתנאים אלו ניתן לפנות:<br>📧 Dn1ofstudio@gmail.com &nbsp; 📞 050-6899101</p>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">× סגור</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Fade in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Hero immediate
+setTimeout(() => {
+  document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('visible'));
+}, 100);
+
+// Work carousels
+document.querySelectorAll('.work-carousel').forEach(carousel => {
+  const slides = Array.from(carousel.querySelectorAll('.work-carousel-slide'));
+  const currentEl = carousel.querySelector('.wc-current');
+  let index = slides.findIndex(s => s.classList.contains('active'));
+  if (index < 0) index = 0;
+
+  function show(i) {
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('active', n === index));
+    if (currentEl) currentEl.textContent = index + 1;
+  }
+
+  const prevBtn = carousel.querySelector('.work-carousel-arrow.prev');
+  const nextBtn = carousel.querySelector('.work-carousel-arrow.next');
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); show(index - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); show(index + 1); });
+
+  show(index);
+});
+
+// Lightbox
+document.querySelectorAll('.work-carousel-slide img').forEach(img => {
+  img.addEventListener('click', () => {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeLightbox();
+});
+</script>
