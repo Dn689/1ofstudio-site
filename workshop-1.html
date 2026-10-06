@@ -305,10 +305,19 @@ src="https://www.facebook.com/tr?id=4835510926677716&ev=PageView&noscript=1"
       var data = new FormData(form);
       var submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      fetch(form.action, {
+      var sheetsUrl = form.getAttribute('data-sheets');
+      var toSheets = sheetsUrl ? fetch(sheetsUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(Object.assign({ 'סדנה': 'אומנות קיר' }, Object.fromEntries(data)))
+      }).then(function () { return true; }, function () { return false; }) : Promise.resolve(false);
+      var toFormspree = fetch(form.action, {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
+      }).then(function (r) { return r.ok; }, function () { return false; });
+      Promise.all([toSheets, toFormspree]).then(function (res) {
+        return { ok: res[0] || res[1] };
       }).then(function (response) {
         if (response.ok) {
           form.reset();
