@@ -229,13 +229,20 @@ src="https://www.facebook.com/tr?id=4835510926677716&ev=PageView&noscript=1"
   </div>
 
   <div class="workshop-signup fade-up visible" id="workshop-signup">
-    <h3>רוצים לדעת מתי הסדנה הקרובה?</h3>
-    <p>השאירו פרטים ונחזור אליכם בהקדם עם כל הפרטים על המועד הקרוב.</p>
+    <h3>המועדים הקרובים</h3>
+    <p>בחרו מועד והשאירו פרטים, ונחזור אליכם בהקדם להשלמת ההרשמה.</p>
     <form class="signup-form" id="workshop1-signup-form" action="https://formspree.io/f/xeaoppeg" method="POST">
       <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - סדנת אומנות קיר">
       <input type="text" name="שם" placeholder="שם" required>
       <input type="email" name="מייל" placeholder="מייל" required>
       <input type="tel" name="טלפון" placeholder="טלפון" required>
+      <select name="תאריך" required>
+        <option value="" disabled selected>באיזה מועד תרצו להשתתף?</option>
+        <option value="יום שישי 09.10.26, 11:00-13:00">יום שישי 09.10.26 · 11:00-13:00</option>
+        <option value="יום שישי 23.10.26, 11:00-13:00">יום שישי 23.10.26 · 11:00-13:00</option>
+        <option value="יום שישי 06.11.26, 11:00-13:00">יום שישי 06.11.26 · 11:00-13:00</option>
+        <option value="אחר">מועד אחר</option>
+      </select>
       <textarea name="תיאור" placeholder="רוצים לספר לנו משהו? (לא חובה)"></textarea>
       <button type="submit">שליחת פרטים</button>
       <p class="signup-status" id="workshop1-signup-status"></p>
@@ -301,7 +308,7 @@ src="https://www.facebook.com/tr?id=4835510926677716&ev=PageView&noscript=1"
       }).then(function (response) {
         if (response.ok) {
           form.reset();
-          Array.prototype.forEach.call(form.querySelectorAll('input, textarea, button'), function (el) {
+          Array.prototype.forEach.call(form.querySelectorAll('input, select, textarea, button'), function (el) {
             el.style.display = 'none';
           });
           status.textContent = 'תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.';
