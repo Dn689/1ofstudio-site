@@ -553,9 +553,15 @@ nav.scrolled { border-bottom-color: var(--border); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
+  flex: 0 0 7.5rem;
 }
 
 .workshop-detail-value { color: var(--bark); line-height: 1.6; text-align: right; }
+.workshop-detail-value .nowrap { white-space: nowrap; }
+@media (max-width: 600px) {
+  .workshop-detail-label { flex-basis: 4.5rem; white-space: normal; }
+  .workshop-detail-row { gap: 1rem; }
+}
 
 .workshop-price {
   font-family: 'Heebo', sans-serif;
