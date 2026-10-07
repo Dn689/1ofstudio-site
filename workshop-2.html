@@ -304,13 +304,18 @@ src="https://www.facebook.com/tr?id=4835510926677716&ev=PageView&noscript=1"
         mode: 'no-cors',
         body: new URLSearchParams(Object.assign({ 'סדנה': 'בטון וחלבון' }, Object.fromEntries(data)))
       }).then(function () { return true; }, function () { return false; }) : Promise.resolve(false);
-      var toFormspree = fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(function (r) { return r.ok; }, function () { return false; });
-      Promise.all([toSheets, toFormspree]).then(function (res) {
-        return { ok: res[0] || res[1] };
+      var sendFormspree = function () {
+        return fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function (r) { return r.ok; }, function () { return false; });
+      };
+      // Formspree is only a backup, so each lead arrives once
+      toSheets.then(function (ok) {
+        return ok ? true : sendFormspree();
+      }).then(function (ok) {
+        return { ok: ok };
       }).then(function (response) {
         if (response.ok) {
           form.reset();
