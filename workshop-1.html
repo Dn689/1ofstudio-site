@@ -308,9 +308,13 @@ src="https://www.facebook.com/tr?id=4835510926677716&ev=PageView&noscript=1"
       var sheetsUrl = form.getAttribute('data-sheets');
       var toSheets = sheetsUrl ? fetch(sheetsUrl, {
         method: 'POST',
-        mode: 'no-cors',
         body: new URLSearchParams(Object.assign({ 'סדנה': 'אומנות קיר' }, Object.fromEntries(data)))
-      }).then(function () { return true; }, function () { return false; }) : Promise.resolve(false);
+      }).then(function (r) { return r.text(); }).then(function (t) {
+        // The script answers exactly "ok" only after saving the lead; anything else falls back to Formspree
+        return t.trim() === 'ok';
+      }, function () { return false; }) : Promise.resolve(false);
+      // Google taking too long counts as failed, so the lead still goes out via Formspree
+      toSheets = Promise.race([toSheets, new Promise(function (res) { setTimeout(function () { res(false); }, 10000); })]);
       var sendFormspree = function () {
         return fetch(form.action, {
           method: 'POST',
