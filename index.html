@@ -548,6 +548,94 @@ nav.scrolled { border-bottom-color: var(--border); }
   }
 }
 
+/* ─── CATALOGS ─── */
+.catalogs {
+  padding: 7rem 4rem;
+  background: var(--linen);
+}
+
+.catalogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+  gap: 2.5rem;
+  justify-content: start;
+}
+
+.catalog-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.catalog-card-frame {
+  aspect-ratio: 4/3;
+  background: #F5F3EC;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.catalog-card:hover .catalog-card-frame {
+  border-color: var(--stone);
+}
+
+.catalog-card-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.catalog-card-frame img.fill {
+  object-fit: cover;
+}
+
+.catalog-card-caption {
+  margin-top: 1.1rem;
+}
+
+.catalog-card-title {
+  font-size: 0.95rem;
+  color: var(--bark);
+  font-weight: 500;
+}
+
+.catalog-card-desc {
+  font-size: 0.78rem;
+  color: var(--stone);
+  margin-top: 0.3rem;
+  line-height: 1.6;
+}
+
+.catalog-card-open {
+  display: inline-block;
+  font-size: 0.68rem;
+  color: var(--stone-light);
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .catalogs {
+    padding: 4rem 1.5rem;
+  }
+  .catalogs-grid {
+    grid-template-columns: 1fr;
+  }
+  .nav-links a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  nav .nav-links {
+    gap: 0.7rem;
+  }
+  nav .nav-links a {
+    letter-spacing: 0.04em;
+  }
+}
+
 /* ─── WORKSHOPS ─── */
 .workshops {
   padding: 4rem 4rem 5rem;
@@ -1657,6 +1745,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   <ul class="nav-links" style="direction: rtl;">
     <li><a href="#about">אודות</a></li>
     <li><a href="#works">עבודות</a></li>
+    <li><a href="#catalogs">קטלוגים</a></li>
     <li><a href="#workshops">סדנאות</a></li>
     <li><a href="#press">כתבות</a></li>
     <li><a href="#studio">הסטודיו</a></li>
@@ -2117,6 +2206,37 @@ nav.scrolled { border-bottom-color: var(--border); }
 
   <!-- placeholder for closing tags -->
 
+</section>
+
+<!-- CATALOGS -->
+<section class="catalogs" id="catalogs">
+  <div class="works-header fade-up visible">
+    <h2 class="works-title">קטלוגים</h2>
+    <span class="works-count">PDF להורדה</span>
+  </div>
+
+  <div class="catalogs-grid">
+    <a class="catalog-card" href="1of-modular-catalog.pdf" target="_blank" rel="noopener">
+      <div class="catalog-card-frame">
+        <img src="images/catalog-modular-cover.jpg" alt="קטלוג הקולקציה המודולרית, 1OF STUDIO" loading="lazy">
+      </div>
+      <div class="catalog-card-caption">
+        <div class="catalog-card-title">קולקציה מודולרית</div>
+        <div class="catalog-card-desc">כיסאות, ספסלים ושולחנות במידות של החלל שלכם.</div>
+        <span class="catalog-card-open">לצפייה בקטלוג ←</span>
+      </div>
+    </a>
+    <a class="catalog-card" href="1of-studio-catalog.pdf" target="_blank" rel="noopener">
+      <div class="catalog-card-frame">
+        <img class="fill" src="images/catalog-furniture-cover.jpg" alt="קטלוג רהיטים, 1OF STUDIO" loading="lazy">
+      </div>
+      <div class="catalog-card-caption">
+        <div class="catalog-card-title">קטלוג רהיטים</div>
+        <div class="catalog-card-desc">רהיטים שפורקו, חודשו והורכבו מחדש. כל אחד בעותק יחיד.</div>
+        <span class="catalog-card-open">לצפייה בקטלוג ←</span>
+      </div>
+    </a>
+  </div>
 </section>
 
 <!-- WORKSHOPS -->
